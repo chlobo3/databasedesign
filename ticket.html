@@ -27,26 +27,89 @@
 
     <div class ="container2">
 
-                    <div class="info">
-                        <p>Name:</p>
-                        <p>Problem Type</p>
-                        <p>Notes:</p>
-                    </div>
+        <div class="info">
+                    
+                        <form id ="ticket" action="save_ticket.php" method="post">
 
+                            <div>
+                                <label for="emNAME">Name:</label>
+                                <input type="text" id="emNAME" name = "employeeName" size="40"/>
+                            </div>
 
+                             <div>
+                                <label for="emID">Caller ID:</label>
+                                <input type="text" id="emID" name = "CallerID" size="40"/>
+                            </div>
             
-            <div class="notes"></div>
+                            <label for = "dropbtn">Problem Type:</label>
+                            <select id = "dropbtn" name="problemType"> 
+                                <option value ="Password Reset"selected>Password Reset</option>
+                                <option value ="Printer Issues">Printer Issues</option>
+                                <option value ="Wi-Fi Connectivity">Wi-Fi Connectivity</option>
+                                <option value ="Blue Screen Error">Blue Screen Error</option>
+                                <option value ="Hard Drive Failure">Hard Drive Failure</option>
+                                <option value ="Software Installation Failure">Software Installation Failure</option>
+                            </select>   
+                        
+                            <div>
+                                <label for="notes">Notes: </label>
+                                <textarea type="text" id="notes" name= "notes" rows = "6" cols = "70"></textarea>
+                            </div>
 
-        <div class="submit">Submit Request</div>
+                            <div>
+                                <label for="emAsign">Specialist:</label>
+                                <select id = "dropbtn" name="Assignee"> 
+                                <option value ="Stephanie Burgers" selected>Stephanie Burgers</option>
+                                <option value ="Steve Warrant">Steve Warrant</option>
+                                <option value ="Holly Phelps">Holly Phelps</option>
+                                </select>  
+                            </div>
+
+                            <input type="submit" id = "submitbutton" name="submit" value = "submit">
+                        </form>            
+                    </div>
+                </div>
 
 
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
-    </div>
+<script>
+    function getSelectedOption (){
+        const dropdown = document.getElementById("dropbtn");
+        const value = dropdown.value;
+        const text = dropdown.options[dropdown.selecetedIndex].text; 
+        console.log("Selected Value:", value);
+        console.log("Selected Text:", text); 
+        return {value, text};
+    }
+
+
+    $("#ticket").submit(function(event){
+
+    event.preventDefault();
+
+    var $form = $(this);
+    var url = $form.attr('action');
+
+    $.post(url, {
+
+        employeeName: $('#emNAME').val(),
+        CallerID: $('#emID').val(),
+        problemType: $('#problemType').val(),
+        notes: $('#notes').val(),
+        Assignee: $('#emAssign').val()
+
+    }, function(data){
+
+        alert("Ticket Submitted Succesfully");
+
+    });
+
+});
+</script>
 
 
 
 
 </body>
-
-
 </html>
