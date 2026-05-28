@@ -44,6 +44,10 @@ h1{
     width: 600px;
     height: 120px;
     background-color: rgb(166, 253, 217);   
+    font-family: monospace;
+    font-size: 20px;
+    justify-content: center;
+    line-height: 50px;
 }
 
 a{
@@ -132,37 +136,79 @@ h2{
     transform: translate(-50,-50);
     left: 15%;
     right: 45%;
-    width: 1000px;
+    width: 998px;
     height: 955px;
     background-color: rgb(166, 253, 217);
     display: flex;
     justify-content: center;
     align-items: center;
+    outline-style: double;
+    outline-color: rgb(166, 253, 217);
+    outline-width: 3px;
 
 }
+
 .info{
     position: absolute;
     top: 70px;
-    width: 150px;
+    width: 350px;
     height: 200px;
     transform: translate(-50,-50);
     left: 5%;
     right: 45%;
- 
     font-family: monospace;
     font-size: 20px;
-    display: flex-start;
     line-height: 40px;
 
 }
 
+.dropbtn{
+    background-color: #000000;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #3d8f5f;
+}
+
+.dropdowns {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 10;
+}
+
+.dropdown-content.show {
+    display: block;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
 .notes{
     position: absolute;
-    top: 260px;
+    top: 200px;
     transform: translate(-50,-50);
-    left: 5%;
+    left: 20%;
     right: 45%;
-    width: 700px;
+    width: 500px;
     height: 200px;
     background-color: white;
     outline-style: double;
@@ -178,5 +224,28 @@ h2{
     right: 45%;
     font-family: monospace;
     font-size: 20px;
+}
 
+.tablecontainer{
+    position: absolute;
+    top: 50px;
+
+}
+
+table{
+    border-collapse: collapse;
+    background-color: rgba(255, 255, 255, 0.658);
+    padding: 5px;
+}
+
+tr:nth-child(even) {
+  background-color: #befacb;
+}
+
+th{
+    padding: 12px;
+}
+
+td{
+    padding: 12px;
 }
