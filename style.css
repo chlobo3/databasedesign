@@ -1,7 +1,7 @@
 body{ 
     height: 100vh; 
     overflow-x: hidden;
-    background: white; 
+    background-image: repeating-linear-gradient(white 30px, white 30px 34px, white 34px 45px, rgb(166, 253, 217) 42px 43px, white 43px 63px, white 63px 64px, white 64px 84px, rgb(166, 253, 217) 84px 85px, white 85px 105px );
 }
 
 .icon{
@@ -18,21 +18,22 @@ body{
 
 .login{
     position: absolute; 
+    background-color: rgb(166, 253, 217);
     top: 38%;
     transform: translate(-50,-50);
     left: 35%;
     right: 35%;
     width: 600px;
     height: 55px;
-    background-color: rgb(166, 253, 217);
     display: flex; 
     justify-content: center;
     align-items: center;
+    font-family: "Montserrat", sans-serif;
 }
 
 h1{ 
-    font-family: monospace;
-    font-size: 25px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
 }
 
 .container{ 
@@ -44,24 +45,24 @@ h1{
     width: 600px;
     height: 120px;
     background-color: rgb(166, 253, 217);   
-    font-family: monospace;
+    font-family: "Montserrat", sans-serif;
     font-size: 20px;
     justify-content: center;
     line-height: 50px;
 }
 
 a{
-    font-family: monospace;
-    font-size: 21px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
     color: black;
  }
 
 .enter{
     position: absolute; 
-    top: 60%;
+    top: 120%;
     transform: translate(-50,-50);
-    left: 35%;
-    right: 35%;
+    left: 0%;
+    right: 5%;
     width: 600px;
     height: 55px;
     background-color: rgb(166, 253, 217);
@@ -75,42 +76,53 @@ a{
     width: 2000px;
     height: 20px;
     background-color: rgb(166, 253, 217);
-    outline-style: double;
-    outline-color: rgb(166, 253, 217);
-    outline-width: 5px;
+    outline-style: solid;
+    outline-color: white;
+    outline-width: 1px;
 }
 
 h2{
     position: absolute;
-    font-family: monospace;
+    font-family: "Montserrat", sans-serif;
     transform: translate(-50,-50);
     left: 15%;
     top: 35px;
     right: 45%;
-    font-size: 25px;
+    font-size: 24px;
 }
 
 .logout{
-    position: absolute;
-    left: 54.5%;
-    width: 260px;
-    height: 75px;
+    position:absolute;
+    left: 84%;
+    height: 50px;
+    width: 250px;
     background-color: rgb(166, 253, 217);
+    outline-style: solid;
+    outline-color: rgb(255, 255, 255);
+    outline-width: 2px;
+}
+
+.logout-btn{
+    position: inherit;
+    top: 10px;
+    left: 50px;
+    border-radius: 10px;
+    width: 150px;
+    background-color: white;
+    text-decoration: none;
+    padding: 5px;
+    justify-content: center;
     display: flex;
-    justify-content: center;   
-    align-items: center;
-    outline-style: double;
-    outline-color: rgb(166, 253, 217);
-    outline-width: 5px;
+    box-shadow: 0px 2px 2px 0px rgba(25, 198, 255, 0.5);
 }
 
 .icon2{
     position: absolute;
-    top: 20%;
+    top: 9%;
     width: 850px;
     height: 650px;
     transform: translate(-50,-50);
-    left: 15%;
+    left: 110%;
     right: 45%;
     opacity: 0.8;
 }
@@ -118,48 +130,77 @@ h2{
 .navbar{
     position: absolute;
     top: 5%;
-    width: 250px;
-    height: 1000px;
+    height: 1050px;
+    width: 260px;
+    line-height: 70px;
     background-color: rgb(166, 253, 217);
-    line-height: 600%;
-    justify-content: center;
-    align-items: flex-start;
-    outline-style: double;
-    outline-color: rgb(166, 253, 217);
-    outline-width: 5px;
+    outline-style: solid;
+    outline-color: rgb(255, 255, 255);
+    outline-width: 3px;
 }
 
+ul{
+    list-style-type: none;
+    margin: 0; 
+    padding: 5px;
+    width: 253px;
+}
+
+li a{ 
+    display: block;
+    color: black;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: white;
+    color: black;
+}
 
 .container2{ 
     position: absolute;
-    top: 10%;
+    top: 5%;
     transform: translate(-50,-50);
-    left: 15%;
+    left: 105%;
     right: 45%;
-    width: 998px;
+    width: 1550px;
     height: 955px;
     background-color: rgb(166, 253, 217);
     display: flex;
     justify-content: center;
     align-items: center;
-    outline-style: double;
+    outline-style: solid;
     outline-color: rgb(166, 253, 217);
     outline-width: 3px;
-
 }
 
 .info{
     position: absolute;
-    top: 70px;
+    top: 20px;
     width: 350px;
     height: 200px;
     transform: translate(-50,-50);
-    left: 5%;
+    left: 2%;
     right: 45%;
-    font-family: monospace;
+    font-family: "Montserrat", sans-serif;
     font-size: 20px;
     line-height: 40px;
+}
 
+.decobox{
+    position: absolute;
+    top: 50px;
+    transform: translate(-50,-50);
+    left: 2%;
+    right: 45%;
+    width: 1400px;
+    height: 500px;
+    background-color: #3e363f17;
+    border-radius: 5px;
+    outline-style: solid;
+    outline-color: rgb(255, 255, 255);
+    z-index: 50px;
 }
 
 .dropbtn{
@@ -222,30 +263,47 @@ h2{
     transform: translate(-50,-50);
     left: 33%;
     right: 45%;
-    font-family: monospace;
+    font-family: "Montserrat", sans-serif;
     font-size: 20px;
+}
+
+.searchbar{
+    position: absolute;
+    top: 60px;
+    left: 500px;
+    border: 2px white;
+    border-radius: 1px;
 }
 
 .tablecontainer{
     position: absolute;
-    top: 50px;
-
+    top: 10px;
+    left: 10px;
 }
 
 table{
     border-collapse: collapse;
-    background-color: rgba(255, 255, 255, 0.658);
-    padding: 5px;
+    background-color: rgba(226, 255, 219, 0.585);
+    font-family: "Montserrat", sans-serif;
+    justify-content: center;
+    display: flex;
+    width: 100%;
+    padding: 15px;
 }
 
-tr:nth-child(even) {
-  background-color: #befacb;
-}
+tr:nth-child(even) {background-color: white;}
+
+tr:hover {background-color: #dddddd48;}
 
 th{
-    padding: 12px;
+    padding: 10px;
+    background-color: #246ec264;
+    color: white;
+    border: 1px solid #ddd;
 }
 
 td{
-    padding: 12px;
+    padding: 5px;
+    border-left: 2px solid white;
+    text-align: left;
 }
