@@ -13,22 +13,22 @@
     <div class="bordertop"></div>
         <h2>Submit a Ticket</h2>
             
-        <div class="logout">   
-            <a href = "dbweb.html">Log out</a>
+        <div class = "logout"> 
+           <a href="dbweb.html" class="logout-btn">Log out</a>
         </div>
 
-        <div class="navbar">
-            <br>
-            <a href ="ticket.html">જ⁀➴ Submit a Ticket</a><br>
-            <a href ="request.html">✉ Ticket Requests</a><br>
-            <a href ="users.html"> ጰ User Management</a><br>
-            <a href ="system.html">⚙ System</a>
-        </div>
+         <div class="navbar">
+            <ul> 
+                <li><a href = "ticket.html">Submit A Ticket</a></li>
+                <li><a href = "request.php">Ticket Request</a></li>
+                <li><a href = "users.php">User Management</a></li>
+                <li><a href = "system.html">System</a></li>
+            </ul>
 
     <div class ="container2">
+        <div class ="decobox">
+            <div class="info">
 
-        <div class="info">
-                    
                         <form id ="ticket" action="save_ticket.php" method="post">
 
                             <div>
@@ -36,11 +36,7 @@
                                 <input type="text" id="emNAME" name = "employeeName" size="40"/>
                             </div>
 
-                             <div>
-                                <label for="emID">Caller ID:</label>
-                                <input type="text" id="emID" name = "CallerID" size="40"/>
-                            </div>
-            
+                    
                             <label for = "dropbtn">Problem Type:</label>
                             <select id = "dropbtn" name="problemType"> 
                                 <option value ="Password Reset"selected>Password Reset</option>
@@ -58,18 +54,20 @@
 
                             <div>
                                 <label for="emAsign">Specialist:</label>
-                                <select id = "dropbtn" name="Assignee"> 
+                                <select id = "dropbtn" name= "Specialist"> 
+
                                 <option value ="Stephanie Burgers" selected>Stephanie Burgers</option>
                                 <option value ="Steve Warrant">Steve Warrant</option>
                                 <option value ="Holly Phelps">Holly Phelps</option>
                                 </select>  
                             </div>
-
-                            <input type="submit" id = "submitbutton" name="submit" value = "submit">
+                            
+                            <input type= "submit" name= "submit" value = "Submit">
+                        
                         </form>            
                     </div>
                 </div>
-
+            </div>
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
@@ -77,35 +75,15 @@
     function getSelectedOption (){
         const dropdown = document.getElementById("dropbtn");
         const value = dropdown.value;
-        const text = dropdown.options[dropdown.selecetedIndex].text; 
+        const text = dropdown.options[dropdown.selectedIndex].text; 
         console.log("Selected Value:", value);
         console.log("Selected Text:", text); 
         return {value, text};
     }
 
 
-    $("#ticket").submit(function(event){
 
-    event.preventDefault();
 
-    var $form = $(this);
-    var url = $form.attr('action');
-
-    $.post(url, {
-
-        employeeName: $('#emNAME').val(),
-        CallerID: $('#emID').val(),
-        problemType: $('#problemType').val(),
-        notes: $('#notes').val(),
-        Assignee: $('#emAssign').val()
-
-    }, function(data){
-
-        alert("Ticket Submitted Succesfully");
-
-    });
-
-});
 </script>
 
 
