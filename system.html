@@ -11,7 +11,7 @@
 <body> 
 
     <div class="bordertop"></div>
-        <h2>System</h2>
+        <h2>System Information</h2>
             
         <div class = "logout"> 
            <a href="dbweb.html" class="logout-btn">Log out</a>
@@ -22,23 +22,104 @@
                 <li><a href = "ticket.html">Submit A Ticket</a></li>
                 <li><a href = "request.php">Ticket Request</a></li>
                 <li><a href = "users.php">User Management</a></li>
-                <li><a href = "system.html">System</a></li>
+                <li><a href = "system.php">System</a></li>
             </ul>
-        </div>
+       
 
     <div class ="container2">
+        <div class ="decobox">
+             <div class = "tablecontainer">
+                    
+
+            <?php
+            $conn = mysqli_connect("localhost", "root", "", "helpdesk");
+
+            $sql = "SELECT * FROM equipment";
+            $result = mysqli_query($conn, $sql);
+
+            ?>
+
+            <h1> Equipment Logs</h1>
+            
+                <table>
+                        <tr>
+                            <th>Employee ID</th>
+                            <th>Serial Number</th>
+                            <th>Operating System</th> 
+                            <th>Software ID</th>
+                            <th>Equipment Type</th>
+                        </tr>   
+                        
+                        <?php while($row = mysqli_fetch_assoc($result)){ ?>
+
+                        <tr>
+                            <td><?php echo $row['employee_id']; ?></td>
+                            <td><?php echo $row['serial_number']; ?></td>
+                            <td><?php echo $row['operating_system']; ?></td>
+                            <td><?php echo $row['software_ID']; ?></td>
+                            <td><?php echo $row['equipment_type']; ?></td>
+                        </tr>
+                        <?php } ?>
+
+                </table>
 
 
 
+        <?php
+
+            $conn = mysqli_connect('localhost', 'root', '', 'helpdesk');
+
+            $sql = "SELECT s.specialist_name, s.job_title, s.problem_type,
+                COUNT(t.specialist_name) AS ticket_count
+                FROM specialist s
+                LEFT JOIN ticket t ON t.specialist_name = s.specialist_name
+                GROUP BY s.specialist_name, s.job_title, s.problem_type";
+
+            $result = mysqli_query($conn, $sql);
+           
+        ?>
+
+        <h1>Ongoing Ticket Support Tracking</h1>  
+
+        <table>
+                <tr>
+                    <th>Specialist</th>
+                    <th>Job Title</th>
+                    <th>Ongoing Tickets</th>
+                    <th>Workload</th>
+                </tr>
+
+                <?php while($row = mysqli_fetch_assoc($result)){ 
+                    
+                    $count = $row['ticket_count'];
+
+                    if($count <=2){
+                        $workload = "Low";
+                    } elseif($count <=5){
+                        $workload = "Medium";
+                    } else {
+                        $workload = "High";
+                    }
+                
+                    ?>
+
+                <tr>
+                    <td><?php echo $row['specialist_name']; ?></td>
+                    <td><?php echo $row['job_title'];?></td>
+                    <td><?php echo $count; ?></td>
+                    <td><?php echo $workload; ?></td>
+                </tr>
+
+                <?php } ?>
+
+        </table>
+
+
+
+        </div>
     </div>
 
 
-
-
 </body>
-
-
-</html>
-
 
 </html>
