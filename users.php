@@ -22,7 +22,7 @@
                 <li><a href = "ticket.html">Submit A Ticket</a></li>
                 <li><a href = "request.php">Ticket Request</a></li>
                 <li><a href = "users.php">User Management</a></li>
-                <li><a href = "system.html">System</a></li>
+                <li><a href = "system.php">System</a></li>
             </ul>
         
 
@@ -40,7 +40,7 @@
                                     
                                 <table>
                                         <tr>
-                                            <th>Caller ID</th>
+                                            <th>Employee ID</th>
                                             <th>Name</th>
                                             <th>Phone Number</th> 
                                             <th>Job Title</+=th>
