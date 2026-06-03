@@ -22,7 +22,7 @@
                 <li><a href = "ticket.html">Submit A Ticket</a></li>
                 <li><a href = "request.php">Ticket Request</a></li>
                 <li><a href = "users.php">User Management</a></li>
-                <li><a href = "system.html">System</a></li>
+                <li><a href = "system.php">System</a></li>
             </ul>
 
     <div class ="container2">
@@ -36,6 +36,10 @@
                                 <input type="text" id="emNAME" name = "employeeName" size="40"/>
                             </div>
 
+                            <div>
+                                <label for="CallerID">Caller ID:</label>
+                                <input type="text" id="CallerID" name = "employee_id" size="40"/>
+                            </div>
                     
                             <label for = "dropbtn">Problem Type:</label>
                             <select id = "dropbtn" name="problemType"> 
@@ -59,12 +63,16 @@
                                 <option value ="Stephanie Burgers" selected>Stephanie Burgers</option>
                                 <option value ="Steve Warrant">Steve Warrant</option>
                                 <option value ="Holly Phelps">Holly Phelps</option>
+                                <option value ="Ella Kenyon">Ella Kenyon</option>
+                                <option value ="Kip Nevil">Kip Nevil</option>
+                                <option value ="Susanna Anabelle">Susanna Anabelle</option>
+                                <option value ="Chloe Booton">Chloe Booton</option>
                                 </select>  
                             </div>
                             
                             <input type= "submit" name= "submit" value = "Submit">
                         
-                        </form>            
+                        </form>           
                     </div>
                 </div>
             </div>
@@ -80,8 +88,6 @@
         console.log("Selected Text:", text); 
         return {value, text};
     }
-
-
 
 
 </script>
