@@ -1,6 +1,7 @@
 body{ 
-    height: 100vh; 
-    overflow-x: hidden;
+    height: 90vh; 
+    overflow: hidden;
+    overflow-y: hidden;
     background-image: repeating-linear-gradient(white 30px, white 30px 34px, white 34px 45px, rgb(166, 253, 217) 42px 43px, white 43px 63px, white 63px 64px, white 64px 84px, rgb(166, 253, 217) 84px 85px, white 85px 105px );
 }
 
@@ -165,7 +166,7 @@ li a:hover {
     left: 105%;
     right: 45%;
     width: 1550px;
-    height: 955px;
+    height: 755px;
     background-color: rgb(166, 253, 217);
     display: flex;
     justify-content: center;
@@ -195,12 +196,14 @@ li a:hover {
     left: 2%;
     right: 45%;
     width: 1400px;
-    height: 500px;
+    height: 550px;
     background-color: #3e363f17;
     border-radius: 5px;
     outline-style: solid;
     outline-color: rgb(255, 255, 255);
     z-index: 50px;
+    overflow-x: visible;
+    overflow-y: scroll;
 }
 
 .dropbtn{
@@ -279,6 +282,7 @@ li a:hover {
     position: absolute;
     top: 10px;
     left: 10px;
+    
 }
 
 table{
@@ -289,6 +293,7 @@ table{
     display: flex;
     width: 100%;
     padding: 15px;
+    text-decoration: none;
 }
 
 tr:nth-child(even) {background-color: white;}
@@ -300,10 +305,12 @@ th{
     background-color: #246ec264;
     color: white;
     border: 1px solid #ddd;
+    text-decoration: none;
 }
 
 td{
     padding: 5px;
     border-left: 2px solid white;
     text-align: left;
+    text-decoration: none;
 }
