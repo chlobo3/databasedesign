@@ -22,7 +22,7 @@
                 <li><a href = "ticket.html">Submit A Ticket</a></li>
                 <li><a href = "request.php">Ticket Request</a></li>
                 <li><a href = "users.php">User Management</a></li>
-                <li><a href = "system.html">System</a></li>
+                <li><a href = "system.php">System</a></li>
             </ul>
 
     <div class ="container2">
@@ -35,8 +35,39 @@
             $result = mysqli_query($conn, $sql);
             ?>
 
+            <?php
+            $conn = mysqli_connect("localhost", "root", "", "helpdesk");
+            $result = mysqli_query($conn, "SELECT * FROM employee");
+            ?>
+
+            <?php
+            $conn = mysqli_connect("localhost", "root", "", "helpdesk");
+
+            if($_SERVER["REQUEST_METHOD"] === "POST"){
+
+            $employee_id  = $_POST['employee_id'];
+            $name         = $_POST['name'];
+            $phone_number = $_POST['phone_number'];
+            $job_title    = $_POST['job_title'];
+            $department   = $_POST['department'];
+
+            $sql = "UPDATE employee 
+            SET name = ?, phone_number = ?, job_title = ?, department = ? 
+            WHERE employee_id = ?";
+
+            $stmt = mysqli_prepare($conn, $sql);
+            mysqli_stmt_bind_param($stmt, "ssssi", $name, $phone_number, $job_title, $department, $employee_id);
+    
+            if(mysqli_stmt_execute($stmt)){
+                 header("Location: users.php");
+                } else {
+             echo "Error: " . mysqli_error($conn);
+            }
+            }
+            ?>
+           
+
                 <div class = "tablecontainer">
-                            <form action = "update_employee.php" method ="post"> 
                                 <table>
                                         <tr>
                                             <th>Caller ID</th>
@@ -49,16 +80,22 @@
                                         
                                     <?php while($row = mysqli_fetch_assoc($result)){ ?>
                                     <tr>
-                                        <td><input type="text" name="CallerID" value="<?php echo $row['employee_id']; ?>"/></td>
-                                        <td><input type="text" name="employeeName" value="<?php echo $row['name']; ?>"/></td>
-                                        <td><input type="text" name="phoneNumber" value="<?php echo $row['phone_number']; ?>"></td>
-                                        <td><input type="text" name="jobTitle" value="<?php echo $row['job_title']; ?>"/></td>
+                                        <form action="update_employee.php" method="post">
+                                        
+                                        <input type="hidden" name="employee_id" value="<?php echo $row['employee_id']; ?>"/>
+                                        <td><?php echo $row['employee_id']; ?></td>
+                                        <td><input type="text" name="name" value="<?php echo $row['name']; ?>"/></td>
+                                        <td><input type="text" name="phone_number" value="<?php echo $row['phone_number']; ?>"/></td>
+                                        <td><input type="text" name="job_title" value="<?php echo $row['job_title']; ?>"/></td>
                                         <td><input type="text" name="department" value="<?php echo $row['department']; ?>"/></td>
                                         <td><input type="submit" value="Save"/></td>
                                     </tr>
-                                        <?php } ?>
+                                        </form>
+
+                                    <?php } ?>
                                 </table>
-                            </form>
+                    
                  </div>
             </div>
         </div>
+
