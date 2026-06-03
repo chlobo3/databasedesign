@@ -27,12 +27,15 @@
                 <li><a href = "ticket.html">Submit A Ticket</a></li>
                 <li><a href = "request.php">Ticket Request</a></li>
                 <li><a href = "users.php">User Management</a></li>
-                <li><a href = "system.html">System</a></li>
+                <li><a href = "system.php">System</a></li>
             </ul>
 
 
     <div class ="container2">
-        <div class="decobox">
+        
+  
+    <div class="decobox">
+              
             <div class = "tablecontainer">
                     
 
@@ -41,18 +44,34 @@
 
             $sql = "SELECT * FROM ticket";
             $result = mysqli_query($conn, $sql);
-
             ?>
-            
+
+
+            <?php 
+            $conn = mysqli_connect("localhost" , "root" , "", "helpdesk");
+
+            if (isset($_POST['delete_ticket'])) {
+                $ticket_no = $_POST['ticket_no'];
+
+                $stmt = mysqli_prepare($conn, "DELETE FROM ticket WHERE ticket_no = ?");
+                mysqli_stmt_bind_param($stmt, "i", $ticket_no);
+                mysqli_stmt_execute($stmt);
+                
+                header("location:" . $_SERVER['request.php']);
+                exit();     
+            }
+            ?>
+          
                 <table>
                         <tr>
                             <th>Ticket No.</th>
-                            <th>Employee ID</th>
+                            <th>Caller ID</th>
                             <th>Problem Type</th> 
                             <th>Notes</th>
                             <th>Specialist</th>
                             <th>Date/Time</th>
                             <th>Status</th>
+                            <th>X</th>
                         </tr>   
                         
                         <?php while($row = mysqli_fetch_assoc($result)){ ?>
@@ -64,11 +83,23 @@
                             <td><?php echo $row['notes']; ?></td>
                             <td><?php echo $row['specialist_name']; ?></td>
                             <td><?php echo $row['created_at']; ?></td>
-                            <td>status</td>
+                            
+                            <td>
+                               <button onclick="changeStatus(this)">
+                                Not Started
+                                </button>
+                            </td>
+
+                            <td>
+                            <form method="POST">
+                            <input type="hidden" name="ticket_no" value="<?php echo $row['ticket_no']; ?>">
+                            <button type="submit" name="delete_ticket">Delete</button>
+                            </form>
+                            </td> 
+
                         </tr>
                         <?php } ?>
     
-
                 </table>
 
 
@@ -78,7 +109,25 @@
 </div>
 
 
+<script>
+function changeStatus(btn) {
+    if (btn.innerText === "Not Started") {
+        btn.innerText = "In Progress";
+    } else if (btn.innerText === "In Progress") {
+        btn.innerText = "Completed";
+    } else {
+        btn.innerText = "Not Started";
+    }
+}
+</script>
 
+
+
+
+</body>
+
+
+</html>
 
 </body>
 
