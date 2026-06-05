@@ -56,8 +56,8 @@
                 $stmt = mysqli_prepare($conn, "DELETE FROM ticket WHERE ticket_no = ?");
                 mysqli_stmt_bind_param($stmt, "i", $ticket_no);
                 mysqli_stmt_execute($stmt);
-                
-                header("location:" . $_SERVER['request.php']);
+    
+                header("Location: " . $_SERVER['PHP_SELF']);
                 exit();     
             }
             ?>
@@ -110,6 +110,7 @@
 
 
 <script>
+
 function changeStatus(btn) {
     if (btn.innerText === "Not Started") {
         btn.innerText = "In Progress";
@@ -119,15 +120,11 @@ function changeStatus(btn) {
         btn.innerText = "Not Started";
     }
 }
+
 </script>
 
 
 
-
-</body>
-
-
-</html>
 
 </body>
 
