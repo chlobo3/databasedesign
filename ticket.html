@@ -89,11 +89,31 @@
         return {value, text};
     }
 
-
 </script>
 
 
+<script>
+    $("#ticket").submit(function(event){
 
+        event.preventDefault(); 
+
+        $.post("save_ticket.php", {
+            employeeName:  $("#emNAME").val(),
+            employee_id:   $("#CallerID").val(),
+            problemType:   $("#dropbtn").val(),
+            notes:         $("#notes").val(),
+            Specialist:    $("select[name='Specialist']").val()
+        },
+        function(response){
+            if(response === "success"){
+                alert("Ticket submitted successfully!");
+                $("#ticket")[0].reset(); 
+            } else {
+                alert("Something went wrong. Please try again.");
+            }
+        });
+    });
+</script>
 
 </body>
 </html>
