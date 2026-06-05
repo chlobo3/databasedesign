@@ -22,34 +22,35 @@
 
     <div class="container">
 
-        <form name ="login" action = "login.php" onsubmit = "return ValidateForm()" method ="post"> 
+        <form name ="login" action = "login.php" method ="post"> 
             
             <div>
                 <label for="unam">Username: </label>
-                <input type= "text" id= "uname" name = "name" size="60" required/>
+                <input type= "text" id="unam" name = "username" size= "60" required/>
             </div>
     
             <div>
                 <label for="pass">Password: </label>
-                <input type="password" id="pass" pass = "pass" size = 61required/> 
+                <input type="password" id = "pass" name = "pwd" size = "60" required/> 
             </div>
          
             <div class="enter">
-                <button type = "submit">Log In</button>
+                <button type = "submit" name = "submit">Log In</button>
             </div>
 
-        
         </form>
     </div>
 
 <script>
+
     function validateForm(){
-        let x = document.forms["login"]["name"].value;
+        let x = document.forms["login"]["username"].value;
         if (x == "") {
             alert ("Username or Password Is Incorrect");
             return false;
         }
     }
+
 </script>
 
 
